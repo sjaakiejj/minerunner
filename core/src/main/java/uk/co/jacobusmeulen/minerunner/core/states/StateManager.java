@@ -1,6 +1,8 @@
 package uk.co.jacobusmeulen.minerunner.core.states;
 
 
+ import com.badlogic.gdx.InputProcessor;  
+
 public class StateManager implements InputProcessor
 {
    private State m_current_state;
@@ -22,7 +24,7 @@ public class StateManager implements InputProcessor
      if(nextState >= 0)
      {
         m_current_state.end();
-	m_current_state = m_current_state.getNextStateById(nextState);
+	m_current_state = m_current_state.getNextStateById(""+nextState);
 	m_current_state.start();
      }
    }
@@ -44,22 +46,26 @@ public class StateManager implements InputProcessor
    public boolean touchDragged (int x, int y, int pointer) {
       return m_current_state.touchDragged(x,y,pointer);
    }
-
+/*
    @Override
    public boolean touchMoved (int x, int y) {
       return m_current_state.touchMoved(x,y);
-   }
+   }*/
 
    @Override
    public boolean scrolled (int amount) {
       return m_current_state.scrolled(amount);
    }
    
+   @Override
+   public boolean mouseMoved(int x, int y) {
+      return false;
+   }
    
    // State Manager only deals with touch. Any keys are debug controls.
    @Override
    public boolean keyDown (int keycode) {
-      return false;
+       return m_current_state.keyDown(keycode);
    }
 
    @Override

@@ -9,7 +9,7 @@ public interface State
    public State getPreviousState();
    
    // Ease up management of menus
-   public State getNextStateById(int id);
+   public State getNextStateById(String id);
    
    //
    
@@ -24,4 +24,5 @@ public interface State
    public boolean touchDragged(int x, int y, int p);
    public boolean touchMoved(int x, int y);
    public boolean scrolled(int amount);
+   public boolean keyDown(int keycode);
 }

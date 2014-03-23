@@ -19,7 +19,7 @@ public class MainMenuState implements State
    {
       m_prev_state = prevState;
       m_next_states = new ArrayList<State>();
-      update_state_id = -1:
+      update_state_id = -1;
    }
    
    // State Management
@@ -61,6 +61,7 @@ public class MainMenuState implements State
    {
       // TODO: Extend to multiple buttons rather than full screen touch
       update_state_id = 0;
+      return true;
    }
    
    // This state is not concerned with the following functionality
@@ -77,6 +78,11 @@ public class MainMenuState implements State
       return false;
    }
    public boolean scrolled(int amount)
+   {
+      return false;
+   }
+   
+   public boolean keyDown(int keycode)
    {
       return false;
    }
